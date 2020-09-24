@@ -15,6 +15,7 @@ public class Main {
 		}
 	}
 
+
 	private static int addArguments(String[] args) {
 		int total = 0;
 		for (int i = 0; i < args.length; i++) {
@@ -22,4 +23,20 @@ public class Main {
 		}
 		return total;
 	}
+
+    private static int addArguments(String[] args) {
+    	int total = 0;
+        if (args[0].equals("-")) {
+            if (args.length < 3) throw new IllegalArgumentException();
+            for (int i = 1; i < args.length; i++) {
+                total -= Integer.parseInt(args[i]);
+            }
+            return total;
+        }
+    	for(int i=0; i < args.length; i++) {
+    		total += Integer.parseInt(args[i]);
+    	}
+        return total;
+    }
+
 }
